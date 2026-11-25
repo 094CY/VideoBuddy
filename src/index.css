@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 浅色主题基底 */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 0 0% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 10%;
+    --radius: 0.625rem;
+
+    /* Node type colors — 去绿色，改用中性色 */
+    --node-text: 0 0% 35%;
+    --node-image: 220 70% 45%;
+    --node-video: 0 0% 45%;
+    --node-audio: 280 50% 55%;
+    --node-script: 250 50% 50%;
+    --node-ai: 0 0% 40%;
+
+    /* 浅色主题小地图 */
+    --minimap-bg: 0 0% 97%;
+    --minimap-mask: 0 0% 100% / 0.5;
+    --minimap-node: 0 0% 75%;
+    --minimap-node-stroke: 0 0% 65%;
+
+    /* 画布点阵 */
+    --canvas-dot-color: 0 0% 78%;
+    --canvas-bg: 0 0% 97.5%;
+
+    /* 侧边栏色板变量 */
+    --sidebar-background: 0 0% 97%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 0 0% 12%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 92%;
+    --sidebar-accent-foreground: 0 0% 12%;
+    --sidebar-border: 0 0% 88%;
+    --sidebar-ring: 220 70% 50%;
+
+    /* 统一的字号与间距刻度，新增组件优先引用 */
+    --text-2xs: 0.6875rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.8125rem;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+  }
+
+  .dark {
+    /* 暗色主题基底 */
+    --background: 0 0% 3.5%;
+    --foreground: 0 0% 93%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 93%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 93%;
+    --primary: 0 0% 92%;
+    --primary-foreground: 0 0% 6%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 13%;
+    --muted-foreground: 0 0% 48%;
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 90%;
+    --destructive: 0 50% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 17%;
+    --input: 0 0% 17%;
+    --ring: 0 0% 40%;
+
+    /* 暗色主题小地图 */
+    --minimap-bg: 0 0% 4%;
+    --minimap-mask: 0 0% 2% / 0.5;
+    --minimap-node: 0 0% 18%;
+    --minimap-node-stroke: 0 0% 26%;
+
+    /* 画布点阵 */
+    --canvas-dot-color: 0 0% 26%;
+    --canvas-bg: 0 0% 5%;
+
+    /* 暗色主题下的节点类型色 */
+    --node-text: 0 0% 72%;
+    --node-image: 220 75% 68%;
+    --node-video: 0 0% 72%;
+    --node-audio: 280 60% 72%;
+    --node-script: 250 65% 74%;
+    --node-ai: 0 0% 68%;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 88%;
+    --sidebar-primary: 0 0% 92%;
+    --sidebar-primary-foreground: 0 0% 8%;
+    --sidebar-accent: 0 0% 16%;
+    --sidebar-accent-foreground: 0 0% 92%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 220 80% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* React Flow custom styles — 全灰色系，无彩色 */
+.react-flow__node {
+  @apply !shadow-none;
+}
+
+.react-flow__edge-path {
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke: hsl(var(--border)) !important;
+}
+
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: hsl(var(--muted-foreground)) !important;
+}
+
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke-dasharray: 6 3;
+}
+
+.react-flow__handle {
+  @apply !w-2 !h-2 !border !border-background;
+  transition: all 0.15s ease;
+}
+
+.react-flow__handle:hover {
+  @apply !w-2.5 !h-2.5;
+}
+
+/* 选中态用节点自身边框传达，去掉外圈阴影；
+   :focus-visible 的焦点环在下方单独定义，不在这里清掉 */
+.react-flow__node.selected,
+.react-flow__node:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.react-flow__background {
+  background-color: hsl(var(--background)) !important;
+}
+
+.react-flow__minimap {
+  @apply !border !border-border/30 rounded-lg;
+  background-color: hsl(var(--minimap-bg)) !important;
+}
+
+.react-flow__minimap-mask {
+  fill: hsl(var(--minimap-mask)) !important;
+}
+
+.react-flow__minimap-node {
+  fill: hsl(var(--minimap-node)) !important;
+  stroke: hsl(var(--minimap-node-stroke)) !important;
+}
+
+.react-flow__controls {
+  @apply !bg-background/90 !border !border-border/20 !rounded-lg !shadow-md !backdrop-blur-sm;
+}
+
+.react-flow__controls-button {
+  @apply !bg-transparent !border-border/20 hover:!bg-accent !fill-foreground;
+}
+
+.react-flow__controls-button + .react-flow__controls-button {
+  @apply !border-t !border-border/20;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border/60 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/30;
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== 全局焦点可见性 =====
+   单行控件用柔和外圈；搜索框与多行输入由所属容器表达边界，自身不画环。 */
+:where(input:not([type="search"]), select):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px hsl(var(--ring) / 0.08);
+}
+
+:where(button, [role="button"], a, [tabindex]):focus-visible {
+  outline: 2px solid hsl(var(--ring) / 0.28);
+  outline-offset: 2px;
+}
+
+/* 画布节点用边框高亮表达焦点，保留键盘可见性 */
+.react-flow__node:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out;
+}
